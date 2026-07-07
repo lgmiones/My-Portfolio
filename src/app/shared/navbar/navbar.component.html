@@ -1,0 +1,38 @@
+<nav class="nav">
+  <div class="nav__container">
+    <!-- Center links -->
+    <ul class="nav__links">
+      <li>
+        <a
+          routerLink="/"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          >Home</a
+        >
+      </li>
+      <li><a routerLink="/about" routerLinkActive="active">About</a></li>
+
+      <!-- these two are sections inside Home (not separate pages) -->
+      <li><a [routerLink]="['/']" fragment="Tech_Stack">Tech Stack</a></li>
+      <li><a [routerLink]="['/']" fragment="Projects">Projects</a></li>
+      <li><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
+    </ul>
+
+    <!-- Right social icons -->
+    <div class="nav__social">
+      <a class="icon" href="https://github.com/lgmiones" target="_blank">
+        <img src="assets/icons/github.svg" alt="GitHub" />
+      </a>
+      <a class="icon" href="https://www.facebook.com/lgmiones" target="_blank">
+        <img src="assets/icons/facebook.svg" alt="facebook" />
+      </a>
+      <a
+        class="icon"
+        href="https://www.linkedin.com/in/louell-grey-miones-037182263"
+        target="_blank"
+      >
+        <img src="assets/icons/linkedin.svg" alt="LinkedIn" />
+      </a>
+    </div>
+  </div>
+</nav>

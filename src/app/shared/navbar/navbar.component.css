@@ -1,0 +1,100 @@
+.nav { width: 100%; background: #fff; }
+
+.nav__container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* Center links (desktop) */
+.nav__links {
+  list-style: none;
+  display: flex;
+  gap: 48px;
+  padding: 0;
+  margin: 0;
+
+  flex: 1;
+  justify-content: center;
+}
+
+.nav__links a {
+  text-decoration: none;
+  color: #5b5b5b;
+  font-weight: 500;
+  position: relative;
+  padding: 6px 0;
+  transition: color 0.2s ease;
+}
+
+/* hover underline */
+.nav__links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, #13b0f5, #e70faa);
+  transition: width 0.25s ease;
+}
+
+.nav__links a:hover { color: #2d2d5a; }
+.nav__links a:hover::after { width: 100%; }
+
+.nav__links a.active {
+  color: #000;
+}
+.nav__links a.active::after {
+  width: 100%;
+}
+
+/* Right side icons */
+.nav__social {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+
+
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.icon img {
+  width: 20px;
+  height: 20px;
+  display: block;
+
+}
+
+.icon:hover {
+  transform: translateY(-2px);
+}
+
+/* ✅ Responsive: stack links nicely */
+@media (max-width: 820px) {
+  .nav__container {
+    flex-direction: column;
+    align-items: center;
+    padding: 18px 16px;
+  }
+
+  .nav__links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px 28px;
+  }
+}

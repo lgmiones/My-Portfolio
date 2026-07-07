@@ -1,0 +1,53 @@
+<footer class="footer">
+  <div class="footer__container">
+    <!-- Top row -->
+    <div class="footer__top">
+      <div class="footer__info">
+        <span>+63 9475823098</span>
+        <span>louellgreyyy@gmail.com</span>
+      </div>
+
+      <div class="footer__socials">
+        <a
+          class="footer__icon"
+          href="https://github.com/lgmiones"
+          target="_blank"
+        >
+          <img src="assets/icons/github.svg" alt="GitHub" />
+        </a>
+        <a
+          class="footer__icon"
+          href="https://www.facebook.com/lgmiones"
+          target="_blank"
+        >
+          <img src="assets/icons/facebook.svg" alt="Facebook" />
+        </a>
+        <a
+          class="footer__icon"
+          href="https://www.linkedin.com/in/louell-grey-miones-037182263"
+          target="_blank"
+        >
+          <img src="assets/icons/linkedin.svg" alt="LinkedIn" />
+        </a>
+      </div>
+    </div>
+
+    <div class="footer__line"></div>
+
+    <!-- Bottom row -->
+    <div class="footer__bottom">
+      <div class="footer__links">
+        <a routerLink="/">Home</a>
+        <a routerLink="/about">About</a>
+        <a [routerLink]="['/']" fragment="Tech_Stack">Technologies</a>
+        <a [routerLink]="['/']" fragment="Projects">Projects</a>
+        <a routerLink="/contact">Contact</a>
+      </div>
+
+      <div class="footer__credit">
+        Designed and built by <span class="name">Louell Grey</span> with
+        <span class="accent">Love & Coffee</span>
+      </div>
+    </div>
+  </div>
+</footer>

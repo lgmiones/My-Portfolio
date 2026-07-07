@@ -1,0 +1,74 @@
+.container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+.contact { padding: 120px 0; text-align: center; }
+
+h1 { font-size: 48px; margin: 0 0 12px; color: #2d2d5a; }
+.lead { color: #666; margin: 0 0 30px; }
+
+.card {
+  margin: 0 auto;
+  text-align: left;
+  max-width: 600px;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 18px 45px rgba(0,0,0,0.12);
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 14px;
+  padding: 12px 0;
+  align-items: center;
+}
+
+.links {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* clickable icon container */
+.icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #2d2d5a;
+  border: 1px solid #2d2d5a;
+  text-decoration: none;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+/* make SVG white */
+.icon img {
+  width: 18px;
+  height: 18px;
+  display: block;
+  filter: invert(1);
+}
+
+.icon:hover {
+  transform: translateY(-2px);
+  background: #000;
+}
+
+/* ✅ Responsive */
+@media (max-width: 768px) {
+  .contact { padding: 90px 0; }
+  h1 { font-size: 38px; }
+  .container { padding: 0 20px; }
+}
+
+@media (max-width: 520px) {
+  .contact { padding: 80px 0; }
+  h1 { font-size: 32px; }
+  .card { padding: 18px; }
+
+  .item { grid-template-columns: 1fr; }
+  .item strong { display: block; margin-bottom: 4px; }
+}

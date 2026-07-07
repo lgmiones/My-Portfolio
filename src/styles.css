@@ -1,1 +1,63 @@
-/* You can add global styles to this file, and also import other style files */
+/* Default = Light */
+:root {
+  --bg: #ffffff;
+  --card: #ffffff;
+  --text: #42446E;
+  --muted: #666666;
+  --nav: #666666;
+  --shadow: 2px 2px 100px rgba(0,0,0,0.2);
+}
+
+/* Dark theme based on your Figma */
+body.dark {
+  --bg: #191919;
+  --card: #363636;
+  --text: #CCCCCC;
+  --muted: #A7A7A7;
+  --nav: #A7A7A7;
+  --shadow: 2px 2px 100px rgba(0,0,0,0.2);
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Poppins, system-ui, Arial, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 16px;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+}
+
+.muted { color: var(--muted); }
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Rain overlay (does NOT change background color) */
+#rain-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999;          /* above everything */
+  pointer-events: none;  /* do not block clicks */
+}
+
+#fx-canvas{
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999;
+  pointer-events: none;
+}
