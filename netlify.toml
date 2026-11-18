@@ -1,0 +1,11 @@
+# Netlify build settings (these override the values set in the Netlify UI).
+[build]
+  command = "npm run build"
+  # Angular 13 writes the site to dist/<project-name>, not dist/
+  publish = "dist/my-portfolio"
+
+# Single-page app: let Angular handle routes like /work and /about on refresh.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
