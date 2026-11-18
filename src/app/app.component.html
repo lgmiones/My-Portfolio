@@ -1,8 +1,21 @@
-<canvas id="fx-canvas" aria-hidden="true"></canvas>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="progress" aria-hidden="true"><span #progress class="progress__bar"></span></div>
+
 <app-navbar></app-navbar>
 
-<main class="page">
+<main id="main" #main class="page" tabindex="-1">
   <router-outlet></router-outlet>
 </main>
 
 <app-footer></app-footer>
+
+<div class="grain" aria-hidden="true"></div>
+
+<div class="curtain" aria-hidden="true">
+  <div #curtainAccent class="curtain__panel curtain__panel--accent"></div>
+  <div #curtainInk class="curtain__panel curtain__panel--ink">
+    <div class="curtain__mask"><span #curtainLabel class="curtain__label"></span></div>
+    <span #curtainCount class="curtain__count">000</span>
+  </div>
+</div>

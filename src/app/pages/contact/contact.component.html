@@ -1,47 +1,57 @@
-<section class="container contact" data-aos="fade-up">
-  <h1>Contact</h1>
-  <p class="lead">Let’s build something together. You can reach me here:</p>
+<section class="contact wrap">
+  <div class="contact__top">
+    <p class="label" appReveal [revealY]="12">(Contact)</p>
+    <p class="label contact__time" appReveal [revealY]="12" [revealDelay]="0.1">
+      <span class="pulse" aria-hidden="true"></span>{{ profile.location }} — {{ time }} (GMT+8)
+    </p>
+  </div>
 
-  <div class="card">
-    <div class="item">
-      <strong>Phone</strong>
-      <span>+63 9475823098</span>
-    </div>
+  <h1 class="contact-title">
+    <span class="contact-title__row" appSplit splitTrigger="load">Let’s</span>
+    <span class="contact-title__row contact-title__row--end">
+      <em class="serif contact-title__em" appSplit splitTrigger="load" splitBy="words" [splitDelay]="0.25">build</em>
+      <span appSplit splitTrigger="load" [splitDelay]="0.35">together</span>
+    </span>
+  </h1>
 
-    <div class="item">
-      <strong>Email</strong>
-      <span>louellgreyyy@gmail.com</span>
-    </div>
+  <div class="contact__grid">
+    <p class="contact__lead" appReveal [revealDelay]="0.5">
+      Have a product to build, a role to fill, or a landing page that needs to convert? Send a note — I’d love to hear
+      what you’re working on.
+    </p>
 
-    <div class="item">
-      <strong>Socials</strong>
-
-      <span class="links">
-        <a
-          class="icon"
-          href="https://github.com/lgmiones"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <img src="assets/icons/github.svg" alt="GitHub" />
+    <div class="mailcard" appReveal [revealDelay]="0.6">
+      <span class="label">Email me</span>
+      <a class="mailcard__addr" [href]="'mailto:' + profile.email">{{ profile.email }}</a>
+      <div class="mailcard__actions">
+        <a class="btn btn--solid" [href]="'mailto:' + profile.email" appMagnetic>
+          <span class="btn__label">Write an email</span><span class="btn__icon" aria-hidden="true">↗</span>
         </a>
-        <a
-          class="icon"
-          href="https://www.facebook.com/lgmiones"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <img src="assets/icons/facebook.svg" alt="facebook" />
-        </a>
-        <a
-          class="icon"
-          href="https://www.linkedin.com/in/louell-grey-miones-037182263"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <img src="assets/icons/linkedin.svg" alt="LinkedIn" />
-        </a>
-      </span>
+        <button type="button" class="btn" (click)="copyEmail()" appMagnetic>
+          <span class="btn__label">{{ copied ? 'Copied ✓' : 'Copy address' }}</span>
+        </button>
+      </div>
     </div>
   </div>
 </section>
+
+<section class="wrap channels-wrap" aria-label="Other ways to reach me">
+  <ul class="channels" appStagger [staggerGap]="0.06">
+    <li *ngFor="let c of channels">
+      <a
+        class="channel"
+        [href]="c.url"
+        [attr.target]="c.external ? '_blank' : null"
+        [attr.rel]="c.external ? 'noopener' : null"
+      >
+        <span class="label channel__label">{{ c.label }}</span>
+        <span class="channel__value">{{ c.value }}</span>
+        <span class="channel__arrow" aria-hidden="true">↗</span>
+      </a>
+    </li>
+  </ul>
+</section>
+
+<div class="toast" [class.is-visible]="copied" role="status" aria-live="polite">
+  <span class="toast__dot" aria-hidden="true"></span>{{ copied ? 'Email copied to clipboard' : '' }}
+</div>

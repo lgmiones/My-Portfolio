@@ -1,11 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="is-booting">
   <head>
     <meta charset="utf-8" />
-    <title>MyPortfolio</title>
+    <title>Louell Grey Miones — Full Stack Developer</title>
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <meta
+      name="description"
+      content="Louell Grey Miones is a Full Stack Developer in Cebu, Philippines building web apps with ASP.NET Core, React and MSSQL, plus high-converting landing and sales pages."
+    />
+    <meta name="theme-color" content="#eeeae2" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Louell Grey Miones — Full Stack Developer" />
+    <meta
+      property="og:description"
+      content="Full-stack web apps, landing pages that convert, and UI/UX design. Based in Cebu, Philippines."
+    />
+    <meta property="og:url" content="https://lgmionesportfolio.netlify.app/" />
+    <meta name="twitter:card" content="summary" />
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="alternate icon" type="image/x-icon" href="favicon.ico" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Instrument+Serif:ital@0;1&family=Martian+Mono:wght@400;500&display=swap"
+    />
+
+    <script>
+      // Apply the saved (or system) theme before first paint.
+      (function () {
+        var t = null;
+        try { t = localStorage.getItem('theme'); } catch (e) {}
+        if (t !== 'light' && t !== 'dark') {
+          t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.dataset.theme = t;
+        if (t === 'dark') document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0e0e0d');
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          document.documentElement.classList.remove('is-booting');
+        }
+      })();
+    </script>
   </head>
   <body>
     <app-root></app-root>

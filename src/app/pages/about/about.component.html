@@ -1,42 +1,147 @@
-<section class="container about" data-aos="fade-up">
-  <h1>About Me</h1>
-  <p class="lead">
-    Full Stack Developer and Web Designer with experience in ASP.NET Core,
-    ReactJS, and MSSQL. Passionate about writing clean, maintainable code using
-    SOLID principles and working in Agile, collaborative team environments.
-    Strong communicator who is adaptable, resourceful, and team-oriented.
-  </p>
-
-  <h2>Work Experience</h2>
-
-  <div class="row">
-    <div>
-      <h3>Technical and Network Support Intern</h3>
-      <p class="meta">Ace-IT Solutions • Philippines • Jun 2024 - Aug 2024</p>
-    </div>
-    <span class="badge">Internship</span>
+<section class="about-hero wrap">
+  <div class="about-hero__top">
+    <p class="label" appReveal [revealY]="12">(About)</p>
+    <p class="label" appReveal [revealY]="12" [revealDelay]="0.1">{{ profile.name }}</p>
   </div>
-  <hr />
+  <h1 class="about-title">
+    <span class="about-title__line" appSplit splitTrigger="load" splitBy="words" [splitGap]="0.07">I build software</span>
+    <span class="about-title__line">
+      <span appSplit splitTrigger="load" splitBy="words" [splitDelay]="0.15">that’s</span>&ngsp;<em class="serif" appSplit splitTrigger="load" splitBy="words" [splitDelay]="0.25">clean</em>
+    </span>
+    <span class="about-title__line">
+      <span appSplit splitTrigger="load" splitBy="words" [splitDelay]="0.35" [splitGap]="0.07">&amp; pages that</span>&ngsp;<em class="serif" appSplit splitTrigger="load" splitBy="words" [splitDelay]="0.55">sell.</em>
+    </span>
+  </h1>
+</section>
 
-  <div class="row">
-    <div>
-      <h3>Fresh Graduate Technical Training</h3>
-      <p class="meta">
-        N-PAX Cebu Corporation • Philippines • Aug 2025 - Dec 2025
-      </p>
+<section class="intro wrap">
+  <figure class="portrait" #portrait>
+    <div class="portrait__frame">
+      <img appParallax [parallaxAmount]="14" [src]="profile.portrait" [alt]="'Portrait of ' + profile.name" width="900" height="849" />
     </div>
-    <span class="badge">Training</span>
-  </div>
+    <figcaption class="label">{{ profile.shortName }} — {{ profile.location }}</figcaption>
+  </figure>
 
-  <h2 style="margin-top: 70px">Education</h2>
+  <div class="intro__text">
+    <p class="intro__lead" appReveal>{{ profile.summary[0] }}</p>
+    <p class="intro__body" appReveal [revealDelay]="0.1">{{ profile.summary[1] }}</p>
 
-  <div class="row">
-    <div>
-      <h3>Bachelor of Science in Computer Engineering</h3>
-      <p class="meta">
-        University of Cebu - Lapu-Lapu & Mandaue • Aug 2021 - June 2025
-      </p>
+    <dl class="facts" appStagger [staggerGap]="0.07">
+      <div class="facts__row">
+        <dt class="label">Now</dt>
+        <dd>Junior Software Engineer &amp; CRM Specialist at N-PAX</dd>
+      </div>
+      <div class="facts__row">
+        <dt class="label">Focus</dt>
+        <dd>Full-stack apps · Landing &amp; sales pages · UI/UX</dd>
+      </div>
+      <div class="facts__row">
+        <dt class="label">Education</dt>
+        <dd>{{ education.degree }}, {{ education.period }}</dd>
+      </div>
+      <div class="facts__row">
+        <dt class="label">Based in</dt>
+        <dd>{{ profile.location }}</dd>
+      </div>
+    </dl>
+
+    <div class="intro__actions" appReveal>
+      <a class="btn btn--solid" [href]="profile.resume" target="_blank" rel="noopener" appMagnetic>
+        <span class="btn__label">Download résumé</span><span class="btn__icon" aria-hidden="true">↓</span>
+      </a>
+      <a class="btn" appLink="/contact" appMagnetic>
+        <span class="btn__label">Get in touch</span><span class="btn__icon" aria-hidden="true">→</span>
+      </a>
     </div>
   </div>
-  <hr />
+</section>
+
+<!-- ============================== EXPERIENCE ============================== -->
+<section class="section wrap" aria-labelledby="xp-title">
+  <header class="sec-head">
+    <div>
+      <p class="label" appReveal>(01) Experience</p>
+      <h2 id="xp-title" class="sec-head__title" appSplit>Work history</h2>
+    </div>
+    <p class="sec-head__note sec-head__meta" appReveal [revealDelay]="0.15">
+      From IT support to ERP engineering and conversion-focused web builds.
+    </p>
+  </header>
+
+  <div class="timeline" #timeline>
+    <span class="timeline__track" aria-hidden="true"><span #fill class="timeline__fill"></span></span>
+    <ol>
+      <li class="job" *ngFor="let job of experience; let i = index" appReveal [revealY]="48">
+        <span class="job__dot" aria-hidden="true"></span>
+        <div class="job__meta">
+          <span class="job__period">{{ job.period }}</span>
+          <span class="label">{{ job.type }}</span>
+        </div>
+        <div class="job__main">
+          <h3 class="job__role">{{ job.role }}</h3>
+          <p class="job__company serif">{{ job.company }}</p>
+          <ul class="job__points">
+            <li *ngFor="let pt of job.points">{{ pt }}</li>
+          </ul>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============================== TRAINING & EDUCATION ============================== -->
+<section class="section learn" aria-labelledby="learn-title">
+  <div class="wrap">
+    <header class="sec-head">
+      <div>
+        <p class="label" appReveal>(02) Learning</p>
+        <h2 id="learn-title" class="sec-head__title" appSplit>Training &amp; education</h2>
+      </div>
+    </header>
+
+    <div class="learn__grid" appStagger [staggerGap]="0.15">
+      <article class="learn__card">
+        <div class="learn__head">
+          <span class="label">Training &amp; certification</span>
+          <span class="label">{{ training.period }}</span>
+        </div>
+        <h3 class="learn__title">{{ training.title }}</h3>
+        <p class="learn__org serif">{{ training.org }}</p>
+        <ul class="learn__points">
+          <li *ngFor="let pt of training.points">{{ pt }}</li>
+        </ul>
+      </article>
+
+      <article class="learn__card learn__card--accent">
+        <div class="learn__head">
+          <span class="label">Education</span>
+          <span class="label">{{ education.period }}</span>
+        </div>
+        <h3 class="learn__title">{{ education.degree }}</h3>
+        <p class="learn__org serif">{{ education.school }}</p>
+        <div class="learn__thesis">
+          <span class="label">Thesis</span>
+          <p>{{ education.thesis }}</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== PRINCIPLES ============================== -->
+<section class="section wrap" aria-labelledby="pr-title">
+  <header class="sec-head sec-head--flush">
+    <div>
+      <p class="label" appReveal>(03) How I work</p>
+      <h2 id="pr-title" class="sec-head__title" appSplit>Principles</h2>
+    </div>
+  </header>
+
+  <ol class="principles" appStagger [staggerGap]="0.1">
+    <li class="principle" *ngFor="let p of principles; let i = index">
+      <span class="principle__num">0{{ i + 1 }}</span>
+      <h3 class="principle__title">{{ p.title }}</h3>
+      <p class="principle__body">{{ p.body }}</p>
+    </li>
+  </ol>
 </section>

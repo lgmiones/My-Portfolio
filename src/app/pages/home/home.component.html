@@ -1,345 +1,214 @@
-<section class="container hero" data-aos="fade-up">
-  <div class="hero__text">
-    <h1>
-      Hi 👋,<br />
-      My name is<br />
-      <span class="grad">Louell Grey Miones</span><br />
-      I build things for web
-    </h1>
+<!-- ============================== HERO ============================== -->
+<section class="hero wrap">
+  <div class="hero__meta" appStagger [staggerDelay]="0.1">
+    <span class="label">(Portfolio — {{ year }})</span>
+    <span class="label">{{ profile.role }}</span>
+    <span class="label">{{ profile.location }}</span>
+    <span class="label hero__status"><span class="pulse" aria-hidden="true"></span>Currently at N-PAX</span>
   </div>
 
-  <div class="hero__img">
-    <img src="assets/profile.jpg" alt="Profile" />
+  <h1 class="hero__name">
+    <span class="hero__row">
+      <span appSplit splitTrigger="load" [splitDelay]="0.05">Louell</span>
+      <span #pill class="hero__pill" aria-hidden="true">
+        <img #pillImg [src]="profile.portrait" alt="" width="900" height="849" />
+      </span>
+      <span appSplit splitTrigger="load" [splitDelay]="0.25">Grey</span>
+    </span>
+    <span class="hero__row hero__row--two">
+      <span class="hero__aside" appReveal [revealDelay]="0.7" [revealY]="16">
+        <span class="serif">Full stack developer</span> building for the web —
+        <span class="serif">and pages that convert.</span>
+      </span>
+      <span appSplit splitTrigger="load" [splitDelay]="0.4">Miones</span>
+    </span>
+  </h1>
+
+  <div class="hero__foot">
+    <p class="hero__intro" appReveal [revealDelay]="0.85" [revealY]="20">
+      I build web applications with <strong>ASP.NET Core</strong>, <strong>React</strong> and <strong>MSSQL</strong>, design
+      in <strong>Figma</strong>, and ship high-converting landing &amp; sales pages wired into CRM checkout funnels.
+    </p>
+    <div class="hero__actions" appReveal [revealDelay]="1" [revealY]="20">
+      <a class="btn btn--solid btn--lg" appLink="/work" appMagnetic>
+        <span class="btn__label">See my work</span><span class="btn__icon" aria-hidden="true">→</span>
+      </a>
+      <a class="btn btn--lg" [href]="profile.resume" target="_blank" rel="noopener" appMagnetic>
+        <span class="btn__label">Résumé</span><span class="btn__icon" aria-hidden="true">↓</span>
+      </a>
+    </div>
+    <a class="badge" appLink="/work" aria-label="View selected work" appReveal [revealDelay]="1.1">
+      <svg class="badge__ring" viewBox="0 0 120 120" aria-hidden="true">
+        <defs><path id="badge-circle" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0" /></defs>
+        <text><textPath href="#badge-circle">Full stack · Landing pages · UI/UX · Cebu PH ·</textPath></text>
+      </svg>
+      <span class="badge__arrow" aria-hidden="true">↘</span>
+    </a>
   </div>
 </section>
 
-<section class="container section" data-aos="fade-up">
-  <h2 class="title" id="Tech_Stack">My Tech Stack</h2>
-  <p class="subtitle">Technologies I’ve been working with recently</p>
-
-  <!-- Option A: use images -->
-  <div class="tech-grid">
-    <img src="assets/tech/html.svg" alt="HTML" />
-    <img src="assets/tech/css.svg" alt="CSS" />
-    <img src="assets/tech/js.svg" alt="JavaScript" />
-    <img src="assets/tech/react.svg" alt="React" />
-    <img src="assets/tech/git.svg" alt="Git" />
-    <img src="assets/tech/bootstrap.svg" alt="Bootstrap" />
-    <img src="assets/tech/sqlserver.svg" alt="SQL Server" />
-    <img src="assets/tech/tailwind.svg" alt="Tailwind" />
-    <img src="assets/tech/dotnet.svg" alt=".NET" />
-    <img src="assets/tech/vscode.svg" alt="VS Code" />
-    <img src="assets/tech/github.svg" alt="GitHub" />
-    <img src="assets/tech/figma.svg" alt="Figma" />
+<!-- ============================== STATS ============================== -->
+<section class="stats wrap" aria-label="Highlights">
+  <div class="stats__grid" appStagger>
+    <div class="stat">
+      <span class="stat__num"><span [appCountUp]="13"></span></span>
+      <span class="stat__label">Projects built &amp; shipped</span>
+    </div>
+    <div class="stat">
+      <span class="stat__num"><span [appCountUp]="5"></span></span>
+      <span class="stat__label">Live campaign pages for Bolder Adventure Park</span>
+    </div>
+    <div class="stat">
+      <span class="stat__num"><span [appCountUp]="3"></span></span>
+      <span class="stat__label">Roles across engineering, web design &amp; IT support</span>
+    </div>
+    <div class="stat">
+      <span class="stat__num"><span [appCountUp]="2025" [countPad]="4"></span></span>
+      <span class="stat__label">BS Computer Engineering, University of Cebu</span>
+    </div>
   </div>
 </section>
 
-<section class="container section">
-  <h2 class="title" id="Projects">Projects</h2>
-  <p class="subtitle">Things I’ve built so far</p>
+<!-- ============================== MARQUEE ============================== -->
+<div class="band" aria-label="Technologies">
+  <div class="marquee">
+    <div class="marquee__track" *ngFor="let copy of [0, 1]" [attr.aria-hidden]="copy === 1 ? 'true' : null">
+      <ng-container *ngFor="let item of marquee">
+        <span class="band__item">{{ item }}</span>
+        <span class="band__star" aria-hidden="true">✳</span>
+      </ng-container>
+    </div>
+  </div>
+</div>
 
-  <div class="projects-grid">
-    <article class="card" data-aos="zoom-in" data-aos-delay="100">
-      <img
-        class="card__img"
-        src="assets/projects/taskapp.png"
-        alt="Task Web App"
-      />
-      <h3>Task Web App</h3>
-      <p>
-        Developed a Dockerized task management app using ASP.NET Core Web API
-        and ReactJS with CRUD, authentication, and responsive Tailwind CSS
-        design.
+<!-- ============================== SELECTED WORK ============================== -->
+<section class="section wrap" aria-labelledby="work-title">
+  <header class="sec-head">
+    <div>
+      <p class="label" appReveal>(01) Selected work</p>
+      <h2 id="work-title" class="sec-head__title" appSplit>Things I’ve built</h2>
+    </div>
+    <div class="sec-head__meta" appReveal [revealDelay]="0.15">
+      <p class="sec-head__note">
+        A mix of full-stack applications and conversion-focused landing pages — from booking systems to live campaign
+        pages for an adventure park.
       </p>
-      <p class="muted">Tech stack: ASP.NET Core, React, SQL Server</p>
-      <div class="card__links">
-        <a
-          href="https://www.canva.com/design/DAG70ISY5Ag/yd_MsR5OolqGh2Dnqa4HDQ/edit?utm_content=DAG70ISY5Ag&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
-          target="_blank"
-          rel="noreferrer"
-          class="project_anchor"
-          ><img
-            class="project_icons"
-            src="assets/icons/chain.svg"
-            alt="chain icon"
-          />Preview</a
-        >
-        <a
-          href="https://github.com/lgmiones/TaskApp"
-          target="_blank"
-          rel="noreferrer"
-          class="project_anchor"
-          ><img
-            class="project_icons"
-            src="assets/icons/github.svg"
-            alt="chain icon"
-          />View Code</a
-        >
-      </div>
-    </article>
+      <a class="ulink label work-all" appLink="/work">View all {{ projectCount }} projects →</a>
+    </div>
+  </header>
 
-    <article class="card" data-aos="zoom-in" data-aos-delay="100">
-      <img
-        class="card__img"
-        src="assets/projects/zflipsters.png"
-        alt="zFLIPSTERS"
-      />
-      <h3>zFLIPSTERS</h3>
-      <p>
-        Full-stack e-commerce app using React and ASP.NET Core with JWT auth,
-        role-based access, EF Core, admin/product management, and responsive UI.
-      </p>
-      <p class="muted">
-        Tech stack : HTML , JavaScript, EF Core, React, SQL Database, MS SQL
-        Server
-      </p>
-      <div class="card__links">
-        <a
-          href="https://www.canva.com/design/DAG1XVHSxz4/isgbVvsO8ahnD8Gx6BjkWQ/edit?utm_content=DAG1XVHSxz4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
-          target="_blank"
-          rel="noreferrer"
-          class="project_anchor"
-          ><img
-            class="project_icons"
-            src="assets/icons/chain.svg"
-            alt="chain icon"
-          />Preview</a
-        >
-        <a
-          href="https://github.com/lgmiones/ShoeApp"
-          target="_blank"
-          rel="noreferrer"
-          class="project_anchor"
-          ><img
-            class="project_icons"
-            src="assets/icons/github.svg"
-            alt="chain icon"
-          />View Code</a
-        >
-      </div>
-    </article>
+  <div class="stack">
+    <article #card class="stack__card" *ngFor="let p of featured; let i = index" [style.--i]="i">
+      <a
+        class="stack__media"
+        [href]="p.links[0]?.url"
+        target="_blank"
+        rel="noopener"
+        [attr.aria-label]="'Open ' + p.title + ' (' + (p.links[0]?.label || 'link') + ')'"
+        (pointermove)="trackBadge($event)"
+      >
+        <div class="stack__frame">
+          <app-court-art *ngIf="p.art === 'court'; else shot"></app-court-art>
+          <ng-template #shot>
+            <img appParallax [parallaxAmount]="10" [src]="p.image" [alt]="p.title + ' screenshot'" loading="lazy" width="1280" height="800" />
+          </ng-template>
+        </div>
+        <span class="stack__badge" aria-hidden="true">{{ p.links[0]?.kind === 'code' ? 'Code' : 'Visit' }} ↗</span>
+      </a>
 
-    <article class="card" data-aos="zoom-in" data-aos-delay="100">
-      <img
-        class="card__img"
-        src="assets/projects/vp.png"
-        alt="Villa Prudencia Resort"
-      />
-      <h3>Villa Prudencia Resort</h3>
-      <p>
-        A clean, responsive website showcasing Villa Prudencia Beach Resort’s
-        beachfront charm in Boljoon, Cebu.
-      </p>
-      <p class="muted">Tech stack: Angular 13</p>
-      <div class="card__links">
-        <a
-          href="https://villa-prudencia-resort.netlify.app/"
-          target="_blank"
-          rel="noreferrer"
-          class="project_anchor"
-          ><img
-            class="project_icons"
-            src="assets/icons/chain.svg"
-            alt="chain icon"
-          />Live Preview</a
-        >
-        <a
-          href="https://villa-prudencia-resort.netlify.app/"
-          target="_blank"
-          rel="noreferrer"
-          class="project_anchor"
-          ><img
-            class="project_icons"
-            src="assets/icons/github.svg"
-            alt="chain icon"
-          />View Code</a
-        >
-      </div>
-    </article>
-
-    <article class="card" data-aos="zoom-in" data-aos-delay="300">
-      <img
-        class="card__img"
-        src="assets/projects/hrconnect.png"
-        alt="HR Connect Chatbot"
-      />
-      <h3>HR Connect Chatbot</h3>
-      <p>
-        An AI-driven HRIS that simplifies leave management and HR support
-        through a chatbot powered by NLP and retrieval-augmented generation
-        (RAG).
-      </p>
-      <p class="muted">
-        Tech stack : Fast Api, Lang Chain, Lang Graph, Chroma DB, MS SQL, Azure
-        Open API
-      </p>
-      <div class="card__links">
-        <a
-          href="https://drive.google.com/drive/folders/1rP8pIAm480EfttD8sRPYsrX7PTeP4hBb?usp=sharing"
-          target="_blank"
-          rel="noreferrer"
-          class="project_anchor"
-          ><img
-            class="project_icons"
-            src="assets/icons/chain.svg"
-            alt="chain icon"
-          />Preview</a
-        >
-        <a
-          href="https://github.com/lgmiones/HR_Connect_Backend"
-          target="_blank"
-          rel="noreferrer"
-          class="project_anchor"
-          ><img
-            class="project_icons"
-            src="assets/icons/github.svg"
-            alt="chain icon"
-          />View Code</a
-        >
-      </div>
-    </article>
-
-    <article class="card" data-aos="zoom-in" data-aos-delay="300">
-      <img
-        class="card__img"
-        src="assets/projects/eggsorting.png"
-        alt="EGG SENTIAL"
-      />
-      <h3>EGGSENTIAL</h3>
-      <p>
-        Built an AI-based egg classification system with YOLOv8 for defect
-        detection and size/weight classification.
-      </p>
-      <p class="muted">Tech stack : Fast Api, Yolov8, Tensor Flow, HTML, CSS</p>
-      <div class="card__links">
-        <a
-          href="https://drive.google.com/drive/folders/17o3anjPlaWUOfJ2IBateu7pajWxioPMj?usp=drive_link"
-          target="_blank"
-          rel="noreferrer"
-          class="project_anchor"
-          ><img
-            class="project_icons"
-            src="assets/icons/chain.svg"
-            alt="chain icon"
-          />Preview</a
-        >
-        <a
-          href="https://drive.google.com/drive/folders/17o3anjPlaWUOfJ2IBateu7pajWxioPMj?usp=drive_link"
-          target="_blank"
-          rel="noreferrer"
-          class="project_anchor"
-          ><img
-            class="project_icons"
-            src="assets/icons/github.svg"
-            alt="chain icon"
-          />View Code</a
-        >
-      </div>
-    </article>
-
-    <article class="card" data-aos="zoom-in" data-aos-delay="300">
-      <img class="card__img" src="assets/projects/fintech.png" alt="FINTECH" />
-      <h3>FINTECH</h3>
-      <p>
-        A personal finance manager that enables users to monitor income,
-        expenses, savings goals, and spending trends with visual data.
-      </p>
-      <p class="muted">Tech stack : React, .NET, EF Core, MS SQL</p>
-      <div class="card__links">
-        <a
-          href="https://www.canva.com/design/DAG70WtTtL8/Kz-BRdeXjTPsPAuGczF90Q/edit?utm_content=DAG70WtTtL8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
-          target="_blank"
-          rel="noreferrer"
-          class="project_anchor"
-          ><img
-            class="project_icons"
-            src="assets/icons/chain.svg"
-            alt="chain icon"
-          />Preview</a
-        >
-        <a
-          href="https://github.com/NajeBabs/fintech"
-          target="_blank"
-          rel="noreferrer"
-          class="project_anchor"
-          ><img
-            class="project_icons"
-            src="assets/icons/github.svg"
-            alt="chain icon"
-          />View Code</a
-        >
-      </div>
-    </article>
-
-    <article class="card" data-aos="zoom-in" data-aos-delay="300">
-      <img class="card__img" src="assets/projects/Bolder.png" alt="FINTECH" />
-      <h3>Bolder Adventure Park Website</h3>
-      <p>
-        Bolder Adventure Park is a website that provides information about the
-        park's attractions, events, and services. It features a responsive
-        design, interactive elements, and a user-friendly interface to enhance
-        the visitor experience.
-      </p>
-      <p class="muted">Tech stack : Angular</p>
-      <div class="card__links">
-        <a
-          href="https://bolder-adventure-park.vercel.app/"
-          target="_blank"
-          rel="noreferrer"
-          class="project_anchor"
-          ><img
-            class="project_icons"
-            src="assets/icons/chain.svg"
-            alt="chain icon"
-          />Preview</a
-        >
-        <a
-          href="https://bolder-adventure-park.vercel.app/"
-          target="_blank"
-          rel="noreferrer"
-          class="project_anchor"
-          ><img
-            class="project_icons"
-            src="assets/icons/github.svg"
-            alt="chain icon"
-          />View Code</a
-        >
-      </div>
-    </article>
-
-    <article class="card" data-aos="zoom-in" data-aos-delay="300">
-      <img class="card__img" src="assets/projects/Limasawa.png" alt="FINTECH" />
-      <h3>Limasawa Itinerary Website</h3>
-      <p>
-        Itinerary website for Limasawa Island, Philippines, providing travel
-        information, attractions, and accommodations. It features a responsive
-        design and interactive elements for an enhanced user experience.
-      </p>
-      <p class="muted">Tech stack : Html, Css, Js</p>
-      <div class="card__links">
-        <a
-          href="https://limasawa-itinerary.netlify.app/"
-          target="_blank"
-          rel="noreferrer"
-          class="project_anchor"
-          ><img
-            class="project_icons"
-            src="assets/icons/chain.svg"
-            alt="chain icon"
-          />Preview</a
-        >
-        <a
-          href="https://limasawa-itinerary.netlify.app/"
-          target="_blank"
-          rel="noreferrer"
-          class="project_anchor"
-          ><img
-            class="project_icons"
-            src="assets/icons/github.svg"
-            alt="chain icon"
-          />View Code</a
-        >
+      <div class="stack__body">
+        <div class="stack__top">
+          <span class="stack__index">0{{ i + 1 }}</span>
+          <span class="label">{{ p.category }}<ng-container *ngIf="p.client"> · {{ p.client }}</ng-container></span>
+        </div>
+        <h3 class="stack__title">{{ p.title }}</h3>
+        <p class="stack__kind serif">{{ p.kind }}</p>
+        <p class="stack__summary">{{ p.summary }}</p>
+        <ul class="stack__chips">
+          <li class="chip" *ngFor="let s of p.stack">{{ s }}</li>
+        </ul>
+        <div class="stack__links">
+          <a *ngFor="let l of p.links" class="ulink label stack__link" [href]="l.url" target="_blank" rel="noopener">
+            {{ l.label }} ↗
+          </a>
+        </div>
       </div>
     </article>
   </div>
+</section>
+
+<!-- ============================== SERVICES ============================== -->
+<section class="section services" aria-labelledby="services-title">
+  <div class="wrap">
+    <header class="sec-head sec-head--flush">
+      <div>
+        <p class="label" appReveal>(02) What I do</p>
+        <h2 id="services-title" class="sec-head__title">
+          <span appSplit>Code, design</span><br />
+          <span appSplit [splitDelay]="0.2">&amp;</span>&ngsp;<em class="serif" appSplit splitBy="words" [splitDelay]="0.3">conversion</em>
+        </h2>
+      </div>
+      <p class="sec-head__note sec-head__meta" appReveal [revealDelay]="0.15">
+        Three disciplines that meet in one person — so the thing that gets designed is the thing that gets built.
+      </p>
+    </header>
+
+    <div class="services__grid" appStagger [staggerGap]="0.12">
+      <article class="service" *ngFor="let s of services; let i = index">
+        <span class="service__num">0{{ i + 1 }}</span>
+        <h3 class="service__title">{{ s.title }}</h3>
+        <p class="service__body">{{ s.body }}</p>
+        <ul class="service__tags">
+          <li class="chip" *ngFor="let t of s.tags">{{ t }}</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== TOOLKIT ============================== -->
+<section class="section wrap" aria-labelledby="toolkit-title">
+  <header class="sec-head">
+    <div>
+      <p class="label" appReveal>(03) Toolkit</p>
+      <h2 id="toolkit-title" class="sec-head__title" appSplit>Tech stack</h2>
+    </div>
+    <p class="sec-head__note sec-head__meta" appReveal [revealDelay]="0.15">
+      The languages, frameworks and tools I reach for — and the practices that keep the work clean.
+    </p>
+  </header>
+
+  <dl class="toolkit" appStagger [staggerGap]="0.06">
+    <div class="toolkit__row" *ngFor="let g of skills">
+      <dt class="label">{{ g.label }}</dt>
+      <dd>
+        <span class="toolkit__item" *ngFor="let item of g.items; let last = last">{{ item }}<span *ngIf="!last" class="toolkit__sep" aria-hidden="true">/</span></span>
+      </dd>
+    </div>
+  </dl>
+</section>
+
+<!-- ============================== EXPERIENCE SNAPSHOT ============================== -->
+<section class="section wrap snapshot" aria-labelledby="exp-title">
+  <header class="sec-head sec-head--flush">
+    <div>
+      <p class="label" appReveal>(04) Experience</p>
+      <h2 id="exp-title" class="sec-head__title" appSplit>Where I’ve worked</h2>
+    </div>
+    <div class="sec-head__meta" appReveal [revealDelay]="0.15">
+      <p class="sec-head__note">Engineering ERP systems by day, building campaign pages that sell, and a start in IT support.</p>
+      <a class="ulink label" appLink="/about">Full story →</a>
+    </div>
+  </header>
+
+  <ol class="snapshot__list" appStagger>
+    <li class="snapshot__item" *ngFor="let e of experience">
+      <a class="snapshot__link" appLink="/about">
+        <span class="label snapshot__period">{{ e.period }}</span>
+        <span class="snapshot__role">{{ e.role }}</span>
+        <span class="snapshot__company">{{ e.company }}</span>
+        <span class="snapshot__arrow" aria-hidden="true">→</span>
+      </a>
+    </li>
+  </ol>
 </section>

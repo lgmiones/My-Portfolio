@@ -1,0 +1,110 @@
+<section class="work-hero wrap">
+  <div class="work-hero__top">
+    <p class="label" appReveal [revealY]="12">(Index of projects)</p>
+    <p class="label" appReveal [revealY]="12" [revealDelay]="0.1">Updated {{ year }}</p>
+  </div>
+  <h1 class="work-title">
+    <span appSplit splitTrigger="load">Work</span>
+    <sup class="work-title__count" appReveal [revealDelay]="0.4" [revealY]="20">({{ projects.length }})</sup>
+  </h1>
+  <div class="work-hero__foot">
+    <p class="work-intro" appReveal [revealDelay]="0.3">
+      Full-stack applications, campaign landing pages for <span class="serif">Bolder Adventure Park</span>, and web
+      builds. Hover a row to preview it — open one for the details and links.
+    </p>
+
+    <div class="filters" role="group" aria-label="Filter projects" #filters appReveal [revealDelay]="0.45">
+      <span class="filters__pill" #pill aria-hidden="true"></span>
+      <button
+        *ngFor="let f of filterOptions"
+        type="button"
+        class="filters__btn"
+        [class.is-active]="filter === f"
+        [attr.aria-pressed]="filter === f"
+        [attr.data-filter]="f"
+        (click)="setFilter(f)"
+      >
+        {{ f }} <span class="filters__count">{{ countFor(f) }}</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<section class="wrap work-list" aria-label="Projects">
+  <div class="index-head" aria-hidden="true">
+    <span class="label">No.</span>
+    <span class="label">Project</span>
+    <span class="label">Category</span>
+    <span class="label">Built with</span>
+    <span></span>
+  </div>
+
+  <ul class="index" #list (pointerleave)="hidePreview()">
+    <li
+      *ngFor="let p of visible; let i = index; trackBy: trackSlug"
+      class="row"
+      [class.is-open]="open === p.slug"
+      (pointerenter)="showPreview(p.slug, $event)"
+    >
+      <button
+        type="button"
+        class="row__head"
+        (click)="toggle(p.slug)"
+        [attr.aria-expanded]="open === p.slug"
+        [attr.aria-controls]="'detail-' + p.slug"
+      >
+        <span class="row__num">{{ i + 1 < 10 ? '0' : '' }}{{ i + 1 }}</span>
+        <span class="row__title">
+          <span class="row__name">{{ p.title }}</span>
+          <span class="row__kind serif">{{ p.kind }}</span>
+        </span>
+        <span class="row__cat label">{{ p.category }}</span>
+        <span class="row__stack">{{ p.stack.slice(0, 3).join(' · ') }}</span>
+        <span class="row__toggle" aria-hidden="true"><i></i><i></i></span>
+      </button>
+
+      <div class="row__detail" [id]="'detail-' + p.slug" role="region" [attr.aria-label]="p.title + ' details'">
+        <div class="row__inner">
+          <div class="row__grid">
+            <div class="row__thumb">
+              <app-court-art *ngIf="p.art === 'court'; else thumb"></app-court-art>
+              <ng-template #thumb><img [src]="p.image" [alt]="p.title + ' screenshot'" loading="lazy" width="1280" height="800" /></ng-template>
+            </div>
+            <div class="row__text">
+              <p class="label" *ngIf="p.client">Client — {{ p.client }}</p>
+              <p class="row__summary">{{ p.summary }}</p>
+              <ul class="row__points">
+                <li *ngFor="let pt of p.points">{{ pt }}</li>
+              </ul>
+              <ul class="row__chips">
+                <li class="chip" *ngFor="let s of p.stack">{{ s }}</li>
+              </ul>
+              <div class="row__links">
+                <a
+                  *ngFor="let l of p.links; let first = first"
+                  class="btn btn--sm"
+                  [class.btn--solid]="first"
+                  [href]="l.url"
+                  target="_blank"
+                  rel="noopener"
+                  [attr.tabindex]="open === p.slug ? 0 : -1"
+                >
+                  <span class="btn__label">{{ l.label }}</span><span class="btn__icon" aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<div class="preview" #preview aria-hidden="true">
+  <div class="preview__card">
+    <ng-container *ngFor="let p of projects">
+      <img *ngIf="p.image" class="preview__item" [attr.data-slug]="p.slug" [src]="p.image" alt="" loading="lazy" />
+      <div *ngIf="p.art" class="preview__item" [attr.data-slug]="p.slug"><app-court-art></app-court-art></div>
+    </ng-container>
+  </div>
+</div>

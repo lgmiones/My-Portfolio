@@ -1,53 +1,52 @@
 <footer class="footer">
-  <div class="footer__container">
-    <!-- Top row -->
-    <div class="footer__top">
-      <div class="footer__info">
-        <span>+63 9475823098</span>
-        <span>louellgreyyy@gmail.com</span>
-      </div>
-
-      <div class="footer__socials">
-        <a
-          class="footer__icon"
-          href="https://github.com/lgmiones"
-          target="_blank"
-        >
-          <img src="assets/icons/github.svg" alt="GitHub" />
-        </a>
-        <a
-          class="footer__icon"
-          href="https://www.facebook.com/lgmiones"
-          target="_blank"
-        >
-          <img src="assets/icons/facebook.svg" alt="Facebook" />
-        </a>
-        <a
-          class="footer__icon"
-          href="https://www.linkedin.com/in/louell-grey-miones-037182263"
-          target="_blank"
-        >
-          <img src="assets/icons/linkedin.svg" alt="LinkedIn" />
-        </a>
-      </div>
+  <section class="cta wrap" *ngIf="showCta">
+    <p class="label" appReveal>(What’s next)</p>
+    <h2 class="cta__title">
+      <span class="cta__line" appSplit splitBy="words" [splitGap]="0.06">Have a product to build</span>
+      <span class="cta__line">
+        <span appSplit splitBy="words" [splitGap]="0.06" [splitDelay]="0.15">or a page that needs to</span>&ngsp;<em class="serif" appSplit splitBy="words" [splitDelay]="0.45">convert?</em>
+      </span>
+    </h2>
+    <div class="cta__actions" appReveal [revealDelay]="0.2">
+      <a class="btn btn--solid btn--lg" appLink="/contact" appMagnetic>
+        <span class="btn__label">Start a conversation</span>
+        <span class="btn__icon" aria-hidden="true">→</span>
+      </a>
+      <a class="ulink cta__mail" [href]="'mailto:' + profile.email">{{ profile.email }}</a>
     </div>
+  </section>
 
-    <div class="footer__line"></div>
-
-    <!-- Bottom row -->
-    <div class="footer__bottom">
-      <div class="footer__links">
-        <a routerLink="/">Home</a>
-        <a routerLink="/about">About</a>
-        <a [routerLink]="['/']" fragment="Tech_Stack">Technologies</a>
-        <a [routerLink]="['/']" fragment="Projects">Projects</a>
-        <a routerLink="/contact">Contact</a>
-      </div>
-
-      <div class="footer__credit">
-        Designed and built by <span class="name">Louell Grey</span> with
-        <span class="accent">Love & Coffee</span>
-      </div>
+  <div class="footer__grid wrap">
+    <div class="footer__col">
+      <p class="label">Navigate</p>
+      <a *ngFor="let l of links" class="footer__link" [appLink]="l.path">{{ l.label }}</a>
     </div>
+    <div class="footer__col">
+      <p class="label">Elsewhere</p>
+      <a *ngFor="let s of socials" class="footer__link" [href]="s.url" target="_blank" rel="noopener">
+        {{ s.label }} <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+    <div class="footer__col">
+      <p class="label">Contact</p>
+      <a class="footer__link" [href]="'mailto:' + profile.email">{{ profile.email }}</a>
+      <a class="footer__link" [href]="profile.phoneHref">{{ profile.phoneDisplay }}</a>
+      <span class="footer__link footer__muted">{{ profile.location }}</span>
+    </div>
+    <div class="footer__col footer__col--end">
+      <button type="button" class="top-btn" (click)="toTop()" appMagnetic>
+        <span aria-hidden="true">↑</span>
+        <span class="sr-only">Back to top</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="wordmark" aria-hidden="true">
+    <span class="wordmark__text">Louell Grey</span>
+  </div>
+
+  <div class="footer__base wrap">
+    <span class="label">© {{ year }} {{ profile.name }}</span>
+    <span class="label">Built with Angular &amp; Motion</span>
   </div>
 </footer>
