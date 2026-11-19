@@ -40,7 +40,8 @@
     <a class="badge" appLink="/work" aria-label="View selected work" appReveal [revealDelay]="1.1">
       <svg class="badge__ring" viewBox="0 0 120 120" aria-hidden="true">
         <defs><path id="badge-circle" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0" /></defs>
-        <text><textPath href="#badge-circle">Full stack · Landing pages · UI/UX · Cebu PH ·</textPath></text>
+        <!-- circle is ~289 units around; textLength spreads the text to fill it, leaving a small gap before the start -->
+        <text><textPath href="#badge-circle" textLength="280" lengthAdjust="spacing">Full stack · Landing pages · UI/UX ·</textPath></text>
       </svg>
       <span class="badge__arrow" aria-hidden="true">↘</span>
     </a>
