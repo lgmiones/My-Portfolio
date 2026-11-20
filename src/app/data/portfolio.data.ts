@@ -159,6 +159,23 @@ export const EDUCATION = {
 
 export const PROJECTS: Project[] = [
   {
+    slug: 'crimescope',
+    title: 'CrimeScope',
+    kind: 'Lapu-Lapu crime map & analytics',
+    category: 'Full Stack',
+    summary:
+      'An interactive crime map of all 30 Lapu-Lapu City barangays, built from official PSA/NAMRIA boundaries and 2020 census data.',
+    points: [
+      '3D, choropleth and heatmap views with month-by-month playback.',
+      'Analytics for crime rates per 10,000 residents, a 24-hour crime clock and trend charts.',
+      'Synthetic data refreshed monthly via GitHub Actions and a Vercel deploy hook.',
+    ],
+    stack: ['Next.js 16', 'React 19', 'TypeScript', 'MapLibre GL', 'D3', 'Tailwind CSS'],
+    image: 'assets/work/crimescope.jpg',
+    links: [{ label: 'Live site', url: 'https://lapu2-crimescope.vercel.app/', kind: 'live' }],
+    featured: true,
+  },
+  {
     slug: 'pickleball',
     title: 'Pickleball Court Booking System',
     kind: 'Online & walk-in booking platform',
